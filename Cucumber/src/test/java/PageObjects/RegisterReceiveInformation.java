@@ -42,7 +42,7 @@ public class RegisterReceiveInformation {
 
     public String getPopupContent()
     {
-        WebDriverWait wait = new WebDriverWait(this.driver, 12);
+        WebDriverWait wait = new WebDriverWait(this.driver, 15);
         WebElement lbMessage = wait.until(ExpectedConditions.presenceOfElementLocated(popupMessageLocator));
         try {
             Thread.sleep(1000);
@@ -54,7 +54,7 @@ public class RegisterReceiveInformation {
 
     public String getFullNameErrorMessage()
     {
-        WebDriverWait wait = new WebDriverWait(this.driver, 12);
+        WebDriverWait wait = new WebDriverWait(this.driver, 15);
         WebElement errorMessage = wait.until(ExpectedConditions.presenceOfElementLocated(fullNameErrorMessage));
         try {
             Thread.sleep(1000);

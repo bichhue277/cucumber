@@ -43,7 +43,6 @@ public class RegisterReceiveInformationStepDefinitions {
     public void user_register_with_valid_email(String email)
     {
         this.register.Email.sendKeys(email);
-        this.register.btnRegister.click();
     }
 
     @Then("^the extra information is displayed$")
@@ -70,17 +69,27 @@ public class RegisterReceiveInformationStepDefinitions {
         Assert.assertEquals(successMessage,this.register.getSuccessPopupContent());
     }
 
-    @And("^user register with blank value for fullName, gender and newType$")
-    public void user_register_with_blank_value_for_fullname_gender_and_newtype()
-    {
-        this.register.btnAgree.click();
-    }
-
     @And("^user register with fullName \"([^\"]*)\"$")
-    public void user_register_with_fullname_something_gender_something_and_newtype_something(String fullName)
-    {
+    public void user_register_with_fullname_something_gender_something_and_newtype_something(String fullName) throws InterruptedException {
+        Thread.sleep(1000);
         this.register.FullName.sendKeys(fullName);
-        this.register.btnAgree.click();
+
+    }
+    @And("^select \"([^\"]*)\" at the gender dropdown list$")
+    public void select_something_at_the_gender_dropdown_list(String gender) {
+        this.register.Gender.sendKeys(gender);
     }
 
+    @And("^select \"([^\"]*)\" at the newType dropdown list$")
+    public void select_something_at_the_newtype_dropdown_list(String newType) {
+        this.register.NewsType.sendKeys(newType);
+    }
+    @And("^click on \"([^\"]*)\" button on home page$")
+    public void click_on_something_button_on_home_page(String strArg1) throws Throwable {
+        this.register.btnRegister.click();
+    }
+    @And("^click on \"([^\"]*)\" button on extra form$")
+    public void click_on_something_button_on_extra_form(String strArg1){
+        this.register.btnAgree.click();
+    }
 }

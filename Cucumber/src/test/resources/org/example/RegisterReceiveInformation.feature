@@ -20,21 +20,28 @@ Feature: RegisterReceiveInformation
   Scenario:Check when user input valid email
     Given The home page is displayed
     When User register with email "bichhuevcweb@gmail.com"
+    And click on "Đăng ký" button on home page
     Then the extra information is displayed
 
    Scenario: Check when user input invalid email
      Given The home page is displayed
      When User register with email "daotao@testmaster.vn"
+     And click on "Đăng ký" button on home page
      Then the popup "E-mail daotao@testmaster.vn đã được sử dụng, bạn hãy chọn một E-mail khác" should be displayed
 
    Scenario: check when user register with blank value for fullName, gender and newType
      Given The home page is displayed
-     When User register with email "bichhuevcweb@gmail.com"
-     And user register with blank value for fullName, gender and newType
+     When User register with email "bichhuevcweb1@gmail.com"
+     And click on "Đăng ký" button on home page
+     And click on "Đồng Ý" button on extra form
      Then in-line error message "* Bạn cần phải nhập dữ liệu" should be display
 
    Scenario: check when user register with valid value for fullName, gender and newType
      Given The home page is displayed
-     When User register with email "bichhuevcweb@gmail.com"
+     When User register with email "bichhuevcweb1@gmail.com"
+     And click on "Đăng ký" button on home page
      And user register with fullName "hue"
+     And select "Nữ" at the gender dropdown list
+     And select "Nhận tất cả thông tin" at the newType dropdown list
+     And click on "Đồng Ý" button on extra form
      Then the success popup "Bạn đã đăng ký nhận bản tin thành công. Hãy kiểm tra Email để xác nhận việc đăng ký" should be displayed
